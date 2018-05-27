@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="fa-ir">
+<head>
+    <title>کاربرد scope-closure چیست؟ &middot; Kill The Js | Samsam Ahmadi,Front-end Developer</title>
+    <meta name="generator" content="Hugo 0.25.1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Samsam PourAhmadi">
+    
+      <meta name="description" content="Samsam Ahmadi | Front-End Developerr ヽ(•‿•)ノ">
+    
+    
+    <link rel="canonical" href="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/"/>
+    <link rel="icon" href="https://killthejs.com/favicon.ico">
+    <link rel="apple-touch-icon" href="https://killthejs.com/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://killthejs.com/css/style.css">
+    <link rel="stylesheet" href="https://killthejs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://killthejs.com/css/monokai.css">
+    <link rel="stylesheet" href="https://killthejs.com/fancybox/jquery.fancybox.css">
+    
+    <link rel="stylesheet" href="https://killthejs.com/css/rtl.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="کاربرد scope-closure چیست؟" />
+<meta property="og:description" content="scope اسکوپ (محدوده) چرا اینقدر مهمه؟
+در ابتدا دو تا قسمت اصلی از جاوااسکریپت رو معرفی میکنم تا با چگونگی کارکرد جاوا اسکریپت اشنا بشیم.
+Engine: مسئول شروع و پایان کامپایل برنامه جاوااسکریپت ما و اجرای اون هست
+Compiler: کارش انجام دادن parsing و code-generation (این دوتا کلا بحثش زیاده شاید بعدا گفتم)
+حالا بریم سروقت اسکوپ.
+Scope: اسکوپ میاد هرچی متغیر رو ما تعریف کردیم جمع و نگهداری میکنه،وقتی که engine مقداری رو میخواد ،جستجو میکنه و بر حسب موقعیت و مجوز و &hellip; مقدار میده به engine" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/" />
+
+
+
+<meta property="article:published_time" content="2017-07-16T13:07:31&#43;02:00"/>
+<meta property="article:modified_time" content="2017-07-16T13:07:31&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="کاربرد scope-closure چیست؟">
+<meta itemprop="description" content="scope اسکوپ (محدوده) چرا اینقدر مهمه؟
+در ابتدا دو تا قسمت اصلی از جاوااسکریپت رو معرفی میکنم تا با چگونگی کارکرد جاوا اسکریپت اشنا بشیم.
+Engine: مسئول شروع و پایان کامپایل برنامه جاوااسکریپت ما و اجرای اون هست
+Compiler: کارش انجام دادن parsing و code-generation (این دوتا کلا بحثش زیاده شاید بعدا گفتم)
+حالا بریم سروقت اسکوپ.
+Scope: اسکوپ میاد هرچی متغیر رو ما تعریف کردیم جمع و نگهداری میکنه،وقتی که engine مقداری رو میخواد ،جستجو میکنه و بر حسب موقعیت و مجوز و &hellip; مقدار میده به engine">
+
+
+<meta itemprop="dateModified" content="2017-07-16T13:07:31&#43;02:00" />
+<meta itemprop="wordCount" content="1243">
+
+
+
+<meta itemprop="keywords" content="scope,closure," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="کاربرد scope-closure چیست؟"/>
+<meta name="twitter:title" content="کاربرد scope-closure چیست؟"/>
+<meta name="twitter:description" content="scope اسکوپ (محدوده) چرا اینقدر مهمه؟
+در ابتدا دو تا قسمت اصلی از جاوااسکریپت رو معرفی میکنم تا با چگونگی کارکرد جاوا اسکریپت اشنا بشیم.
+Engine: مسئول شروع و پایان کامپایل برنامه جاوااسکریپت ما و اجرای اون هست
+Compiler: کارش انجام دادن parsing و code-generation (این دوتا کلا بحثش زیاده شاید بعدا گفتم)
+حالا بریم سروقت اسکوپ.
+Scope: اسکوپ میاد هرچی متغیر رو ما تعریف کردیم جمع و نگهداری میکنه،وقتی که engine مقداری رو میخواد ،جستجو میکنه و بر حسب موقعیت و مجوز و &hellip; مقدار میده به engine"/>
+<meta name="twitter:site" content="@samsam_ahmadi"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://killthejs.com/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://killthejs.com/css/images/logo.png')"></i>
+          
+          <span class="site-title">Kill The JS</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://killthejs.com/">خانه</a>
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://killthejs.com/categories/">دسته بندی</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://killthejs.com/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="جستجو">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://killthejs.com/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://killthejs.com/">خانه</a></td>
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://killthejs.com/categories/">دسته بندی</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://killthejs.com/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://killthejs.com/css/images/avatar.png">
+      
+      <h2 id="name">Samsam PourAhmadi</h2>
+      <h3 id="title">Front-End Developer, JS lover, Meteor</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>kerman</span>
+      
+          <a id="follow" href="https://github.com/samsam-ahmadi">
+              دنبال کردن
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        3
+        <span>پست‌</span>
+      </div>
+      <div class="article-info-block">
+        
+          8
+        
+        <span>
+            تگ‌
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/samsam-ahmadi" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//instagram.com/samsam_ahmadi" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/samsam_ahmadi" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://killthejs.com/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <img src="https://killthejs.com/images/scope/scope-closure.png" class="article-banner">
+        
+
+        <header class="article-header">
+    <a href="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/">
+    <h1 class="article-title" itemprop="name">
+        کاربرد scope-closure چیست؟
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-07-16 13:07:31 &#43;0200 &#43;0200" itemprop="datePublished">1396/04/25</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://killthejs.com/categories/javascript">javascript</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://killthejs.com/tags/scope">scope</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://killthejs.com/tags/closure">closure</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<h2 id="scope">scope</h2>
+
+<p>اسکوپ (محدوده) چرا اینقدر مهمه؟</p>
+
+<p>در ابتدا دو تا قسمت اصلی از جاوااسکریپت رو معرفی میکنم تا با چگونگی کارکرد جاوا اسکریپت اشنا بشیم.</p>
+
+<p>Engine: مسئول شروع و پایان کامپایل برنامه جاوااسکریپت ما و اجرای اون هست</p>
+
+<p>Compiler:   کارش انجام دادن  parsing و code-generation  (این دوتا کلا بحثش زیاده شاید بعدا گفتم)</p>
+
+<p>حالا بریم سروقت اسکوپ.</p>
+
+<h3 id="scope-1">Scope:</h3>
+
+<p>اسکوپ میاد هرچی متغیر رو ما تعریف کردیم جمع و نگهداری میکنه،وقتی که engine مقداری رو میخواد ،جستجو میکنه و بر حسب موقعیت و مجوز و &hellip; مقدار میده به engine</p>
+
+<p>به صورت ساده تر یعنی توانایی دسترسی به تابع‌ها و متغییر‌ها و ابجکت‌ها در بعضی از قسمت های کدهامون، که میتونه داخل بلاک باشه یا تابع‌ها و &hellip; و اینکه توانایی دیدن این متغیرها رو در چه ناحیه‌هایی از کدهامون داریم.</p>
+
+<p>در اصل دو نوع اسکوپ داریم یکی local و دیگری global.اگر متغیری درون global تعریف کنیم در اصل تا وقتی که کد ما run هست این متغیر هم در دسترس هست. اما local scope چون داخل تابع‌ها و بلاک‌ها وجود داره تا وقتی در دسترس هست که تابع یا بلاک اجرا یا در دسترس باشه.</p>
+
+<p>نمونه local , global  اسکوپ رو میتونید ببینید.</p>
+
+<pre><code>var globalScope = 5;
+
+function globalFunctionScope(){
+    var localScope = 10;
+}
+</code></pre>
+
+<h3 id="lexical-scope">lexical scope:</h3>
+
+<p>یکی از پیچیده ترین بحث‌ها هست.توضیحش یه مقدار سخته.امیدوارم بتونم توضیحش رو بدم.</p>
+
+<p>یکی از مدل‌های چگونگی کارکرد scope در جاوااسکریپت است.(روش دیگر   dynamic scope مثل(this) هست) و البته باید بگم که lexical scope در اکثر زبان‌های برنامه نویسی وجود داره.</p>
+
+<p>قبل از همه این‌ها باید تعریفی از فاز lexing در کامپایلر داشته باشیم.lexing در اصل کدهامون رو به صورت استرینگ و جدا از هم تبدیل میکنه و بعد به صورت token نگهداری میشه.</p>
+
+<p>مثل کد زیر .</p>
+
+<pre><code>var a=2;
+</code></pre>
+
+<p>که به این صورت میشه
+<code>var</code>, <code>a</code>,<code>=</code>,<code>2</code></p>
+
+<p>و بعد به صورت token ذخیره میشن.</p>
+
+<p>در این مدل هنگامی که شما در حال نوشتن تابع‌ها و یا بلاک‌ها هستید اسکوپ‌‌ها را نیز تعریف میکنید. در هنگام lexing در کامپایل کردن ،scope میدونه کجا و چطوری تابع‌ها و ابجکت‌ها و متغیر‌ها تعریف شده اند پس میدونه جایگاهشون و دسترسیشون رو.در هنگامی که engine نیاز داره به متغیر‌ی، اسکوپ طبق دسترسی که متغیر داره به engine مقادیرشون رو میده.</p>
+
+<p>بزارید با یک مثال ساده تر پیش بریم.</p>
+
+<p>اینجا ما دو تا تابع داریم که به صورت تودرتو هستند.داخل هر کدوم هم یک متغیر تعریف کردیم . همیشه تابع های داخلی به متغیرهای تعریف شده تابع های خارجی دسترسی دارند . اما اما تابع های که خارجی هستند به متغیرهای تابع های داخلی خودشون دسترسی ندارن.</p>
+
+<pre><code>function one(){
+    var first =1;
+    // second قابل دسترسی در اینجا نیست
+
+    function two(){
+        var second =2;
+        //first قابل دسترسی هست 
+    }
+}
+</code></pre>
+
+<h3 id="closure">closure</h3>
+
+<p>کلوژر یا closure ،در واقع یک تابع باعث میشه که به متغیرها و ورودی‌های تابع‌ (argument) توابع خارجی خودش ارتباط داشته باشیم.یه جوری lexical scope رو دور میزنیم. و دسترسی پیدا میکنیم به متغیر‌ها و مقادیر ورودی تابع های بیرونی .</p>
+
+<p>مثال زیر یک نمونه کوچیک از closure هست .</p>
+
+<pre><code>  function siteName(hello){
+    var name = &quot;kill the js&quot;;
+
+    return function returnName(a){
+        console.log(hello + name+a);
+    }
+ }
+
+
+ var getName = siteName(&quot;hello &quot;);
+
+ getName(&quot;!&quot;); // hello kill the JS
+</code></pre>
+
+<p>توی مثال بالا میبینیم که تابع returnName به متغیر‌ها ،ورودی‌های siteName دسترسی داره.</p>
+
+<p>هنگامی که تابع siteName رو فراخوانی میکنیم در اصل یک تابع رو برمیگردونه که به تمام متغیر‌های والدش(siteName) و ورودی‌هاش و متغیر‌های گلوبال دسترسی داره.
+و میتونیم تابع return شده رو درون متغیر جدیدی از نوع تابع ذخیره کنیم که باز بتونیم صداش بزنیم و  ورودی‌ بهش بدیم.(تمام سعیمو کردم که ساده توضیح بدم    ヽ(•‿•)ノ     )</p>
+
+<p>بعضی وقت‌ها نیازی نیست که حتما خروجی تابع رو ذخیره کنیم درون یک تابع دیگه و بعد فراخوانی کنیم، میتونیم به صورت مستقیم از صدا زدن تابع والد به همراه یک ‍<code>()</code> اضافه‌تر استفاده کرد.
+مثال زیر بهتر منظورم رو میرسونه</p>
+
+<pre><code>function x(a){
+    return function y(b){
+        return a+b;
+    }
+}
+
+console.log(x(2)(3)); // 5
+</code></pre>
+
+<p>همه این توضیحات برای این بود  که بتونم این کد زیر رو توضیح بدم.</p>
+
+<pre><code>for (var i=1; i&lt;4; i++) {
+    setTimeout( function timer(){
+        console.log( i );
+    }, i*1000 );
+}
+// output is 4,4,4
+</code></pre>
+
+<p>اما خب چرا خروجی چیزی هست که اصلا انتظارش رو نداریم ؟وقتی داشتم برای یک قسمت از سایت انیمیشن میساختم دقیقا به این مشکل برخوردم.بعد کلی جستجو و تحقیق نتایج کار اینا شد.</p>
+
+<p>دلیلش اینه که تمام callbackها یا همون تابع داخل  setTimeout بعد از اینکه حلقه for تموم میشه اجرا میشن. حلقه هم وقتی تموم میشه که i=۴ باشه .پس ۴ رو میده به تابع  setTimeout یا تابع بیرونی setTimeout که گلوبال هست</p>
+
+<p>اینجا i=4 درون global scope قراره داره پس همه جا در دسترس هست. یک نکته در نظر بگیرید که ما برای تعریف متغیر i از var استفاده کردیم و var یک functional scope هست.یعنی درون هر تابع یک اسکوپ ساخته میشه اما حلقه for از این قضیه پیروی نمیکنه.</p>
+
+<p>به این خاطر که در هر تکرار داخل حلقه یک تابع درون  setTimeout داریم که ساخته میشه پس در اینجا ۳ تا تابع به صورت جداگانه ساخته میشه که درون یک global scope قرار دارند حالا این global scope شامل  i=4 هست به خاطر این هست که  به هر سه تا تابع i=4 داده میشه.
+چیزی که کم داریم یک scope closure هست.</p>
+
+<p>برای اینکه این اتفاق رخ نده باید یک scope داخل حلقه بسازیم و متغیر رو داخل هر تکرار ذخیره کنیم.میتونیم برای ساختن اسکوپ از تابع خود ران یا IIFE (میتونید ایفی هم بخونید) استفاده کنیم .</p>
+
+<pre><code>for (var i=1; i&lt;4; i++) {
+    (function(){ // create scope with IIFE
+        setTimeout( function timer(){
+            console.log( i );
+        }, i*1000 );
+    })();
+}
+</code></pre>
+
+<p>اما این هنوز کافی نیست اگه ران کنید این کد رو متوجه میشید باز مشکل داره. چه چیزی کم داریم اینجا ؟ اسکوپ رو که در هر تکرار ساختیم، الان تنها چیزی که نیاز داریم اینه که در هر تکرار متغیر خودمون رو بسازیم و ذخیره کنیم متغیر حلقه رو درونش.</p>
+
+<pre><code>for (var i=1; i&lt;4; i++) {
+    (function(){ // create scope with IIFE  
+        var j=i;
+
+        setTimeout( function timer(){
+            console.log( j );
+        }, j*1000 );
+    })();
+}
+</code></pre>
+
+<p>خب الان درست شد. راه حل دیگ اینکه از تابع خود‌ران (IIFE) استفاده کنیم برای اعمال متغیر خودمون بدون ساختن متغیر جدید:</p>
+
+<pre><code>for (var i=1; i&lt;4; i++) {
+    (function(j){ // create scope with IIFE 
+
+        setTimeout( function timer(){
+            console.log( j );
+        }, j*1000 );
+    })(i);
+}
+</code></pre>
+
+<p>دو تا روش دیگه هست برای رفع این مشکل .
+بزارید یکم درباره  let , const صحبت کنم .</p>
+
+<p>let یک block scope هست</p>
+
+<p>تفاوت let,var توی دسترسی به متغیر هست. let علاوه بر functional scope شامل block statement هم میشه . یعنی داخل هر <code>{}</code>متغیر تعریف بشه داخل اون و زیر مجموعه هاش قابل دسترس هست. و در اسکوپ‌های بیرونی قابل دسترس نیست.
+const ,let مثل هم عمل میکنن با این تفاوت که  const  رو نمیشه تغییر داد. البته میشه اما شرایط داره و توضیحش مفصله</p>
+
+<p>خب با این توضیح میشه یک راه حل دیگه هم داد به جای اینکه از تابع IIFE استفاده کنیم و بعد داخلش متغیر خودمون رو بسازیم .از let برای تعریف متغیرمون استفاده میکنیم  که همین طور باعث میشه یک scope هم ساخته بشه</p>
+
+<pre><code>for (var i=1; i&lt;4; i++) {
+
+    let j=i;
+
+    setTimeout( function timer(){
+        console.log( j );
+    }, j*1000 );
+
+}
+</code></pre>
+
+<p>و یا در اخر میشه از خود حلقه استفاده کرد . و به جای تعریف متغیر شمارنده بوسیله var، از let استفاده کرد که هر تکرار یک اسکوپ با متغیر خودمون میسازیم.</p>
+
+<pre><code>for (let i=1; i&lt;4; i++) {
+    setTimeout( function timer(){
+        console.log( i );
+    }, i*1000 );
+}
+</code></pre>
+
+<p>امیدوارم مفید بوده باشه.</p>
+
+<p>خیلی مخلصیم.</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/" data-id="ae79c76d562087b80e9dca4c85257b42" class="article-share-link">
+        <i class="fa fa-share"></i>
+        اشتراک گذاشتن
+    </a>
+    
+    <a href="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/#disqus_thread" class="article-comment-link">
+        نظرات
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                    '<input class="article-share-input" value="' + url + '">',
+                    '<div class="article-share-links">',
+                    '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                    '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                    '<a href="https://telegram.me/share/url?url=' + encodedUrl + '" class="fa fa-telegram article-share-pinterest" target="_blank" title="Telegram"></a>',
+                    '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                    '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          قبلی
+      </strong>
+      <div class="article-nav-title">معرفی Destructuring در جاوااسکریپت</div>
+    </a>
+    
+
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "killthejs-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        پست‌های اخیر
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://killthejs.com/images/scope/scope-closure.png)" alt="کاربرد scope-closure چیست؟" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://killthejs.com/categories/javascript">
+                        javascript
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/" class="title">کاربرد scope-closure چیست؟</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-16 13:07:31 &#43;0200 &#43;0200" itemprop="datePublished">2017-07-16</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://killthejs.com/images/destructuring/Destructuring.png)" alt="کاربرد scope-closure چیست؟" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://killthejs.com/categories/javascript">
+                        javascript
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/" class="title">معرفی Destructuring در جاوااسکریپت</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-07 13:07:31 &#43;0200 &#43;0200" itemprop="datePublished">2017-05-07</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://killthejs.com/2017/%D9%85%D9%86-%D9%88-%D8%A8%D8%A7%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D8%A8%D8%A7%D9%85%D8%A7-%D8%AF%D8%B1-%D8%B1%D9%88%D8%B2%DB%B1%DB%B3-%D8%B9%DB%8C%D8%AF/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://killthejs.com/images/moba/barack-obama.jpg)" alt="کاربرد scope-closure چیست؟" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://killthejs.com/categories/javascript">
+                        Javascript
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://killthejs.com/2017/%D9%85%D9%86-%D9%88-%D8%A8%D8%A7%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D8%A8%D8%A7%D9%85%D8%A7-%D8%AF%D8%B1-%D8%B1%D9%88%D8%B2%DB%B1%DB%B3-%D8%B9%DB%8C%D8%AF/" class="title">من و باراک اوباما در روز۱۳ عید</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-05 13:50:46 &#43;0200 &#43;0200" itemprop="datePublished">2017-05-05</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">دسته بندی‌ها</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://killthejs.com/categories/javascript">
+                    javascript
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        تگ‌ها
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://killthejs.com/tags/closure" style="font-size: 12px;">closure</a>
+        
+        
+        <a href="https://killthejs.com/tags/crawling" style="font-size: 12px;">crawling</a>
+        
+        
+        <a href="https://killthejs.com/tags/destructuring" style="font-size: 12px;">destructuring</a>
+        
+        
+        <a href="https://killthejs.com/tags/es6" style="font-size: 12px;">es6</a>
+        
+        
+        <a href="https://killthejs.com/tags/js" style="font-size: 12px;">js</a>
+        
+        
+        <a href="https://killthejs.com/tags/nodejs" style="font-size: 12px;">nodejs</a>
+        
+        
+        <a href="https://killthejs.com/tags/phantomjs" style="font-size: 12px;">phantomjs</a>
+        
+        
+        <a href="https://killthejs.com/tags/scope" style="font-size: 12px;">scope</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      Powered by <a href="//gohugo.io">Hugo</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-100438480-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+<script src="https://killthejs.com/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://killthejs.com/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>

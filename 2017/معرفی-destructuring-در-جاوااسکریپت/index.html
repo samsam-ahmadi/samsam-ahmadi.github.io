@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="fa-ir">
+<head>
+    <title>معرفی Destructuring در جاوااسکریپت &middot; Kill The Js | Samsam Ahmadi,Front-end Developer</title>
+    <meta name="generator" content="Hugo 0.25.1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Samsam PourAhmadi">
+    
+      <meta name="description" content="Samsam Ahmadi | Front-End Developerr ヽ(•‿•)ノ">
+    
+    
+    <link rel="canonical" href="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/"/>
+    <link rel="icon" href="https://killthejs.com/favicon.ico">
+    <link rel="apple-touch-icon" href="https://killthejs.com/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://killthejs.com/css/style.css">
+    <link rel="stylesheet" href="https://killthejs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://killthejs.com/css/monokai.css">
+    <link rel="stylesheet" href="https://killthejs.com/fancybox/jquery.fancybox.css">
+    
+    <link rel="stylesheet" href="https://killthejs.com/css/rtl.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="معرفی Destructuring در جاوااسکریپت" />
+<meta property="og:description" content="Destructuring چیست؟ در es6 معرفی شد. کارش گرفتن دیتا به صورت خاص از درون آرایه‌ها و ابجکت‌ها است اما به شکل و ساختار assignment کردن.
+بزارید با مثال و توضیح بیشتر معرفی کنیم این ویژگی عالی رو.
+یک زمانی میشه که ما از یک تابع یه آرایه میگیریم و میخوایم توی چندتا متغیر ذخیره کنیم . روش متداول این شکلیه .
+function genre(){ return [&quot;post-rock&quot;,&quot;trance&quot;,&quot;dubstep&quot;]; } var getGenre = genre(); var a = getGenre[0]; var b = getGenre[1]; var c = getGenre[2];  اما اگه بخوایم از destructuring استفاده کنیم باید یک تغییری توی تعریف متغیر بدیم , به این صورت که از ‍[ ] استفاده کنیم که در اصل ارایه نیست و کار متغیر getGenre رو انجام میده." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/" />
+
+
+
+<meta property="article:published_time" content="2017-05-07T13:07:31&#43;02:00"/>
+<meta property="article:modified_time" content="2017-05-07T13:07:31&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="معرفی Destructuring در جاوااسکریپت">
+<meta itemprop="description" content="Destructuring چیست؟ در es6 معرفی شد. کارش گرفتن دیتا به صورت خاص از درون آرایه‌ها و ابجکت‌ها است اما به شکل و ساختار assignment کردن.
+بزارید با مثال و توضیح بیشتر معرفی کنیم این ویژگی عالی رو.
+یک زمانی میشه که ما از یک تابع یه آرایه میگیریم و میخوایم توی چندتا متغیر ذخیره کنیم . روش متداول این شکلیه .
+function genre(){ return [&quot;post-rock&quot;,&quot;trance&quot;,&quot;dubstep&quot;]; } var getGenre = genre(); var a = getGenre[0]; var b = getGenre[1]; var c = getGenre[2];  اما اگه بخوایم از destructuring استفاده کنیم باید یک تغییری توی تعریف متغیر بدیم , به این صورت که از ‍[ ] استفاده کنیم که در اصل ارایه نیست و کار متغیر getGenre رو انجام میده.">
+
+
+<meta itemprop="dateModified" content="2017-05-07T13:07:31&#43;02:00" />
+<meta itemprop="wordCount" content="379">
+
+
+
+<meta itemprop="keywords" content="Destructuring,es6," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="معرفی Destructuring در جاوااسکریپت"/>
+<meta name="twitter:title" content="معرفی Destructuring در جاوااسکریپت"/>
+<meta name="twitter:description" content="Destructuring چیست؟ در es6 معرفی شد. کارش گرفتن دیتا به صورت خاص از درون آرایه‌ها و ابجکت‌ها است اما به شکل و ساختار assignment کردن.
+بزارید با مثال و توضیح بیشتر معرفی کنیم این ویژگی عالی رو.
+یک زمانی میشه که ما از یک تابع یه آرایه میگیریم و میخوایم توی چندتا متغیر ذخیره کنیم . روش متداول این شکلیه .
+function genre(){ return [&quot;post-rock&quot;,&quot;trance&quot;,&quot;dubstep&quot;]; } var getGenre = genre(); var a = getGenre[0]; var b = getGenre[1]; var c = getGenre[2];  اما اگه بخوایم از destructuring استفاده کنیم باید یک تغییری توی تعریف متغیر بدیم , به این صورت که از ‍[ ] استفاده کنیم که در اصل ارایه نیست و کار متغیر getGenre رو انجام میده."/>
+<meta name="twitter:site" content="@samsam_ahmadi"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://killthejs.com/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://killthejs.com/css/images/logo.png')"></i>
+          
+          <span class="site-title">Kill The JS</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://killthejs.com/">خانه</a>
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://killthejs.com/categories/">دسته بندی</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://killthejs.com/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="جستجو">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://killthejs.com/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://killthejs.com/">خانه</a></td>
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://killthejs.com/categories/">دسته بندی</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://killthejs.com/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://killthejs.com/css/images/avatar.png">
+      
+      <h2 id="name">Samsam PourAhmadi</h2>
+      <h3 id="title">Front-End Developer, JS lover, Meteor</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>kerman</span>
+      
+          <a id="follow" href="https://github.com/samsam-ahmadi">
+              دنبال کردن
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        3
+        <span>پست‌</span>
+      </div>
+      <div class="article-info-block">
+        
+          8
+        
+        <span>
+            تگ‌
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/samsam-ahmadi" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//instagram.com/samsam_ahmadi" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/samsam_ahmadi" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://killthejs.com/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <img src="https://killthejs.com/images/destructuring/Destructuring.png" class="article-banner">
+        
+
+        <header class="article-header">
+    <a href="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/">
+    <h1 class="article-title" itemprop="name">
+        معرفی Destructuring در جاوااسکریپت
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-05-07 13:07:31 &#43;0200 &#43;0200" itemprop="datePublished">1396/3/17</time>
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://killthejs.com/categories/javascript">javascript</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://killthejs.com/tags/destructuring">Destructuring</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://killthejs.com/tags/es6">es6</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<h2 id="destructuring-چیست">Destructuring چیست؟</h2>
+
+<p>در es6 معرفی شد. کارش گرفتن دیتا به صورت خاص  از درون آرایه‌ها و ابجکت‌ها است اما به شکل و ساختار assignment کردن.</p>
+
+<p>بزارید با مثال و توضیح بیشتر معرفی کنیم این ویژگی عالی رو.</p>
+
+<p>یک زمانی میشه که ما از یک تابع یه آرایه میگیریم و میخوایم توی چندتا متغیر ذخیره کنیم . روش متداول این شکلیه .</p>
+
+<pre><code>function genre(){
+    return [&quot;post-rock&quot;,&quot;trance&quot;,&quot;dubstep&quot;];
+}
+
+var getGenre = genre();
+
+var a  = getGenre[0];
+var b  = getGenre[1];
+var c  = getGenre[2];
+</code></pre>
+
+<p>اما اگه بخوایم از destructuring استفاده کنیم باید یک تغییری توی تعریف متغیر بدیم , به این صورت که از ‍<code>[  ]</code>  استفاده کنیم که در اصل  ارایه نیست و کار متغیر getGenre رو انجام میده.</p>
+
+<pre><code>function genre(){
+    return [&quot;post-rock&quot;,&quot;trance&quot;,&quot;dubstep&quot;];
+}
+
+var [a,b,c] = genre();
+</code></pre>
+
+<p>اما یک سوال اگه آرایه دو تا فیلد رو برگردونه چه اتفاقی میوفته ؟ به متغیر undefined <code>c</code>   داده میشه .
+و اگر بیشتر از سه تا برگردونه ؟ در اصل سه تای اولی اختصاص داده میشن به a,b,c و بقیه به هیچی اختصاص داده نمیشن .</p>
+
+<p>اما اگر میخواین دو تا فیلد اولی رو بریزید توی  متغیر‌های ابتدایی و بقیه رو بریزید توی متغییر سوم باید از spread یا همون ‍‍<code>...</code> استفاده کنید.
+به این صورت</p>
+
+<pre><code>var [a, b, ...c] = genre();
+</code></pre>
+
+<p>حالا اگه ما ابجکت داشته باشیم به این صورت کد ما میشه .</p>
+
+<br><br>
+
+<iframe class="" id="" data-url="http://jsbin.com/cijoxe/embed?js" src="http://jsbin.com/cijoxe/embed?js,console" style="border: 1px solid rgb(170, 170, 170); width: 100%; min-height: 300px; height: 38px;"></iframe>
+
+<br><br>
+
+<p>همه چیز ساده به نظر میرسه . فقط یک نکته اینه که چون ما داخل obj آیتم a رو داریم .وقتی که میخوایم داده‌ها رو از ابجکت بکشیم بیرون  نیازی نیست که <code>a:a‍‍‍</code> استفاده کنیم به جای این از a تنها استفاده میکنیم . اما اگه بخوایم بریزیم توی یک متغیر جدید مثل <code>x</code> باید از این روش  استفاده کنید . <code>b:x</code></p>
+
+<p>حالا فرض کنید که دو تا متغیر دارین و میخواین مقادیرشون رو جابه جا کنید برای اینکار باید از یک متغیر جدید استفاده کنید.
+مثلا :</p>
+
+<pre><code>    var temp =a;
+    a=b;
+    b=temp;
+</code></pre>
+
+<p>اما میتونید از یک راه ساده تر  استفاده کنید برای اینکار . به این صورت</p>
+
+<pre><code>[x,y] = [y,x];
+</code></pre>
+
+<br><br>
+
+<iframe class="" id="" data-url="http://jsbin.com/newohi/embed?js" src="http://jsbin.com/newohi/embed?js,console" style="border: 1px solid rgb(170, 170, 170); width: 100%; min-height: 300px; height: 38px;"></iframe>
+
+<br><br>
+
+<p>و تصور کنید که یک ارایه تعریف کردیم و بخوایم بعضی از ایتم‌های ارایه رو بدیم به متغیر دیگه و بقیه اون رو هم به یک متغیر دیگه که به این صورت باید عمل کنیم.</p>
+
+<br><br>
+
+<iframe class="" id="" data-url="http://jsbin.com/gusavim/embed?js" src="http://jsbin.com/gusavim/embed?js,console" style="border: 1px solid rgb(170, 170, 170); width: 100%; min-height: 300px; height: 38px;"></iframe>
+
+<br><br>
+
+<p>این‌ موارد فقط جزئی از روش استفاده سینتکس destructuring هست.</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/" data-id="d42cb9f631f9f9879c95a3c5e1ffa33d" class="article-share-link">
+        <i class="fa fa-share"></i>
+        اشتراک گذاشتن
+    </a>
+    
+    <a href="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/#disqus_thread" class="article-comment-link">
+        نظرات
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                    '<input class="article-share-input" value="' + url + '">',
+                    '<div class="article-share-links">',
+                    '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                    '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                    '<a href="https://telegram.me/share/url?url=' + encodedUrl + '" class="fa fa-telegram article-share-pinterest" target="_blank" title="Telegram"></a>',
+                    '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                    '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://killthejs.com/2017/%D9%85%D9%86-%D9%88-%D8%A8%D8%A7%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D8%A8%D8%A7%D9%85%D8%A7-%D8%AF%D8%B1-%D8%B1%D9%88%D8%B2%DB%B1%DB%B3-%D8%B9%DB%8C%D8%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          قبلی
+      </strong>
+      <div class="article-nav-title">من و باراک اوباما در روز۱۳ عید</div>
+    </a>
+    
+
+    
+    <a href="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          بعدی
+      </strong>
+      <div class="article-nav-title">کاربرد scope-closure چیست؟</div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "killthejs-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        پست‌های اخیر
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://killthejs.com/images/scope/scope-closure.png)" alt="معرفی Destructuring در جاوااسکریپت" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://killthejs.com/categories/javascript">
+                        javascript
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/" class="title">کاربرد scope-closure چیست؟</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-16 13:07:31 &#43;0200 &#43;0200" itemprop="datePublished">2017-07-16</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://killthejs.com/images/destructuring/Destructuring.png)" alt="معرفی Destructuring در جاوااسکریپت" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://killthejs.com/categories/javascript">
+                        javascript
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/" class="title">معرفی Destructuring در جاوااسکریپت</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-07 13:07:31 &#43;0200 &#43;0200" itemprop="datePublished">2017-05-07</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://killthejs.com/2017/%D9%85%D9%86-%D9%88-%D8%A8%D8%A7%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D8%A8%D8%A7%D9%85%D8%A7-%D8%AF%D8%B1-%D8%B1%D9%88%D8%B2%DB%B1%DB%B3-%D8%B9%DB%8C%D8%AF/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://killthejs.com/images/moba/barack-obama.jpg)" alt="معرفی Destructuring در جاوااسکریپت" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://killthejs.com/categories/javascript">
+                        Javascript
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://killthejs.com/2017/%D9%85%D9%86-%D9%88-%D8%A8%D8%A7%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D8%A8%D8%A7%D9%85%D8%A7-%D8%AF%D8%B1-%D8%B1%D9%88%D8%B2%DB%B1%DB%B3-%D8%B9%DB%8C%D8%AF/" class="title">من و باراک اوباما در روز۱۳ عید</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-05 13:50:46 &#43;0200 &#43;0200" itemprop="datePublished">2017-05-05</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">دسته بندی‌ها</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://killthejs.com/categories/javascript">
+                    javascript
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        تگ‌ها
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://killthejs.com/tags/closure" style="font-size: 12px;">closure</a>
+        
+        
+        <a href="https://killthejs.com/tags/crawling" style="font-size: 12px;">crawling</a>
+        
+        
+        <a href="https://killthejs.com/tags/destructuring" style="font-size: 12px;">destructuring</a>
+        
+        
+        <a href="https://killthejs.com/tags/es6" style="font-size: 12px;">es6</a>
+        
+        
+        <a href="https://killthejs.com/tags/js" style="font-size: 12px;">js</a>
+        
+        
+        <a href="https://killthejs.com/tags/nodejs" style="font-size: 12px;">nodejs</a>
+        
+        
+        <a href="https://killthejs.com/tags/phantomjs" style="font-size: 12px;">phantomjs</a>
+        
+        
+        <a href="https://killthejs.com/tags/scope" style="font-size: 12px;">scope</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      Powered by <a href="//gohugo.io">Hugo</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-100438480-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+<script src="https://killthejs.com/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://killthejs.com/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>

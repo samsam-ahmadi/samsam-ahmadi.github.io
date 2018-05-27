@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Kill The Js | Samsam Ahmadi,Front-end Developer</title>
+    <link>https://killthejs.com/tags/</link>
+    <description>Recent content in Tags on Kill The Js | Samsam Ahmadi,Front-end Developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa-ir</language>
+    <copyright>Powered by [Hugo](//gohugo.io).</copyright>
+    <lastBuildDate>Sun, 16 Jul 2017 13:07:31 +0200</lastBuildDate>
+    
+	<atom:link href="https://killthejs.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Closure</title>
+      <link>https://killthejs.com/tags/closure/</link>
+      <pubDate>Sun, 16 Jul 2017 13:07:31 +0200</pubDate>
+      
+      <guid>https://killthejs.com/tags/closure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Crawling</title>
+      <link>https://killthejs.com/tags/crawling/</link>
+      <pubDate>Fri, 05 May 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://killthejs.com/tags/crawling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Destructuring</title>
+      <link>https://killthejs.com/tags/destructuring/</link>
+      <pubDate>Sun, 07 May 2017 13:07:31 +0200</pubDate>
+      
+      <guid>https://killthejs.com/tags/destructuring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Es6</title>
+      <link>https://killthejs.com/tags/es6/</link>
+      <pubDate>Sun, 07 May 2017 13:07:31 +0200</pubDate>
+      
+      <guid>https://killthejs.com/tags/es6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Js</title>
+      <link>https://killthejs.com/tags/js/</link>
+      <pubDate>Fri, 05 May 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://killthejs.com/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nodejs</title>
+      <link>https://killthejs.com/tags/nodejs/</link>
+      <pubDate>Fri, 05 May 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://killthejs.com/tags/nodejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Phantomjs</title>
+      <link>https://killthejs.com/tags/phantomjs/</link>
+      <pubDate>Fri, 05 May 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://killthejs.com/tags/phantomjs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scope</title>
+      <link>https://killthejs.com/tags/scope/</link>
+      <pubDate>Sun, 16 Jul 2017 13:07:31 +0200</pubDate>
+      
+      <guid>https://killthejs.com/tags/scope/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

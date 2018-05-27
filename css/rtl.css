@@ -1,0 +1,256 @@
+@font-face {
+    font-family: Vazir;
+    src: url('../vazir/Vazir.eot');
+    src: url('../vazir/Vazir.eot?#iefix') format('embedded-opentype'),
+    url('../vazir/Vazir.woff') format('woff'),
+    url('../vazir/Vazir.ttf') format('truetype');
+    font-weight: normal;
+}
+/* test */
+@font-face {
+    font-family: Vazir;
+    src: url('../vazir/Vazir-Bold.eot');
+    src: url('../vazir/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../vazir/Vazir-Bold.woff') format('woff'),
+    url('../vazir/Vazir-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Vazir;
+    src: url('../vazir/Vazir-Light.eot');
+    src: url('../vazir/Vazir-Light.eot?#iefix') format('embedded-opentype'),
+    url('../vazir/Vazir-Light.woff') format('woff'),
+    url('../vazir/Vazir-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+p,a,div,span,nav,li,ol,ul,.article-nav-caption{
+    font-family: 'Vazir';
+    letter-spacing:normal;
+}
+#search-form-wrap .search-form .search-form-submit{
+    left: 15px;
+    right: unset;
+}
+.rtl,p,.tagcloud,h2,h1,h3,h5{
+    direction: rtl;
+    text-align: right;
+}
+
+.right{
+    float:right !important;
+}
+.nav-icon, .main-nav-link{
+    float: right;
+}
+
+#sub-nav, #search-form-wrap{
+    direction: rtl;
+}
+
+#main-nav{
+    float: right;
+}
+
+.widget-title{
+    text-align: right;
+}
+
+#recent-post{
+    direction: rtl;
+}
+
+.widget ul:not(#recent-post) li a:before, .widget ol:not(#recent-post) li a:before{
+    transform: rotate(180deg);
+    margin-left: 6px;
+    margin-right: 0px;
+    float: right;
+}
+
+.category-list-link{
+    float: right;
+}
+
+.article-list{
+    width: 47%;
+    margin:10px 10px 0px 0px;
+    min-height: 430px;
+    display: inline-block;
+}
+
+
+.article-inner img:hover{
+    transform: scale(1.1);
+    transition:all ease 0.5s;
+}
+
+.article-inner img{
+    
+    transition:all ease 0.5s;
+}
+
+.article-inner .a-img{
+    overflow: hidden;
+    width: auto;
+    display: block;
+    height: 155px
+}
+
+.article-meta > div{
+    float: right;
+}
+.article-header .article-title{
+    text-align: right;
+}
+.a-img-single{
+    height: 300px;
+    overflow: hidden;
+}
+.article-meta{
+    font-size: 0.83em;
+    color: #757575;
+}
+
+.article-meta > div .fa{
+    
+    color: #757575;
+}
+
+.article-title{
+    font-size: 1.35em;
+}
+
+.article-more-link a{
+    border-radius: 3px;
+    border:0.5px solid #0883a4;
+    height: 3em;
+    line-height: 3em;
+    padding:0 2.2em;
+}
+.article-comment-link{
+    float:left;
+}
+.page404 aside {
+    display: none;
+}
+.effect-8, .effect-8 > span {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    line-height: 8px;
+    padding: 10px 2em;
+}
+.effect-8:before, .effect-8:after, .effect-8 > span:before, .effect-8 > span:after {
+    content: '';
+    position: absolute;
+    transition: transform .3s ease;
+}
+.effect-8 {
+    display: inline-block;
+    overflow: hidden;
+    height:2em;
+}
+
+.effect-8:before {
+    left: 0;
+    top: -1px;
+    width: 98%;
+    height: 96%;
+    border:1px solid #5c6bc0;
+    transform: translateY(+100%);
+}
+.article-entry a{
+    color: #5c6bc0;
+}
+.effect-8:after {
+    content: attr(data-content);
+    top: 0;
+    left: 46px;
+    height: 0px;
+    margin: 12px;
+    line-height: 28px;
+    color: #304ffe;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: height .3s ease;
+}
+
+.effect-8 > span {
+    display: block;
+    margin: 2px;
+}
+
+.effect-8:hover:before {
+    transform: translateY(0);
+    top: 0px;
+}
+
+.effect-8:hover:after {
+    height: 100%;
+}
+
+.article-morelink {
+    text-align: left;
+}
+
+.article-entry a:hover{
+    text-decoration: none;
+}
+.article-entry{
+    color:#2d2d2d;
+}
+.outer #main {
+    margin-top: 30px;
+    direction: rtl;
+    
+}
+
+.layout-wrap .layout-title{
+    text-align: right;
+}
+
+.layout-wrap-inner.list-categories li a:before{
+    
+    content:"\f0d9";
+    float: right;
+    top: 5px;
+    position: relative;
+    margin-left: 10px;
+}
+
+#toTop{
+    border-radius: 50%;
+}
+
+.archives .article:first-child{
+    margin:10px 10px 0px 0px;
+}
+.article-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#recent-post li:hover .item-title a{
+    color:#333;
+}
+code{
+    color: #ef3019;
+    font-size: 0.95em;
+    direction: ltr;
+}
+
+#main-nav-mobile .menu{
+    float:right;
+    direction: rtl;
+}
+@media screen and (max-width: 559px) {
+    .article-list {
+        width: auto;
+        margin: 10px 10px 0px 10px;
+    }
+}
+@media screen and (max-width: 800px) {
+    
+}
