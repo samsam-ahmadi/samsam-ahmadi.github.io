@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://killthejs.com/2018/%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C%DB%8C-%DA%A9%D9%87-%D9%82%D8%A8%D9%84-%D9%88-%D8%A8%D8%B9%D8%AF-%D9%86%D8%B5%D8%A8-%D8%A7%D9%88%D8%A8%D9%88%D9%86%D8%AA%D9%88-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%A7%D9%86%D8%AC%D8%A7%D9%85-%D8%AF%D8%A7%D8%AF/</loc>
+    <lastmod>2018-08-11T13:07:31+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/</loc>
     <lastmod>2017-07-16T13:07:31+02:00</lastmod>
   </url>
@@ -47,6 +52,18 @@
   </url>
   
   <url>
+    <loc>https://killthejs.com/tags/gnu-linux/</loc>
+    <lastmod>2018-08-11T13:07:31+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://killthejs.com/categories/gnu-linux/</loc>
+    <lastmod>2018-08-11T13:07:31+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://killthejs.com/categories/javascript/</loc>
     <lastmod>2017-07-16T13:07:31+02:00</lastmod>
     <priority>0</priority>
@@ -60,7 +77,7 @@
   
   <url>
     <loc>https://killthejs.com/</loc>
-    <lastmod>2017-07-16T13:07:31+02:00</lastmod>
+    <lastmod>2018-08-11T13:07:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -78,7 +95,7 @@
   
   <url>
     <loc>https://killthejs.com/post/</loc>
-    <lastmod>2017-07-16T13:07:31+02:00</lastmod>
+    <lastmod>2018-08-11T13:07:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -91,6 +108,12 @@
   <url>
     <loc>https://killthejs.com/tags/</loc>
     <lastmod>2017-07-16T13:07:31+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://killthejs.com/tags/ubuntu/</loc>
+    <lastmod>2018-08-11T13:07:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   

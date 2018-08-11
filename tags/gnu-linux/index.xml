@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gnu Linux on Kill The Js | Samsam Ahmadi,Front-end Developer</title>
+    <link>https://killthejs.com/tags/gnu-linux/</link>
+    <description>Recent content in Gnu Linux on Kill The Js | Samsam Ahmadi,Front-end Developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa-ir</language>
+    <lastBuildDate>Sat, 11 Aug 2018 13:07:31 +0200</lastBuildDate>
+    
+	<atom:link href="https://killthejs.com/tags/gnu-linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>کارهایی که قبل و بعد نصب اوبونتو باید انجام داد</title>
+      <link>https://killthejs.com/2018/%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C%DB%8C-%DA%A9%D9%87-%D9%82%D8%A8%D9%84-%D9%88-%D8%A8%D8%B9%D8%AF-%D9%86%D8%B5%D8%A8-%D8%A7%D9%88%D8%A8%D9%88%D9%86%D8%AA%D9%88-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%A7%D9%86%D8%AC%D8%A7%D9%85-%D8%AF%D8%A7%D8%AF/</link>
+      <pubDate>Sat, 11 Aug 2018 13:07:31 +0200</pubDate>
+      
+      <guid>https://killthejs.com/2018/%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C%DB%8C-%DA%A9%D9%87-%D9%82%D8%A8%D9%84-%D9%88-%D8%A8%D8%B9%D8%AF-%D9%86%D8%B5%D8%A8-%D8%A7%D9%88%D8%A8%D9%88%D9%86%D8%AA%D9%88-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%A7%D9%86%D8%AC%D8%A7%D9%85-%D8%AF%D8%A7%D8%AF/</guid>
+      <description>قبل نصب اوبونتو باید چکار کنیم؟ به طور خلاصه اگه ویندوز ۱۰ دارید باید ویژگی disable fast boot رو غیر فعال کنید.تا در اوبونتو بتوانید به پارتیشن‌های ntfs دسترسی داشته باشید. بعد از این مرحله اماده سازی پارتیشن‌ برای نصب اوبونتو هست.پیشنهاد من برای کسانی که تازه میخواهند نصب کنند اینه که در کنار پارتیشن ویندوز یک پارتیشن دیگر هم برای دیتا‌هایی مثل فیلم و موزیک و &amp;hellip; داشته باشید و اگر بیشتر از یک پارتیشن برای این دیتاها دارید بهتره که پارتیشن‌هارو merge کنید و یک پارتیشن برای دیتا‌ها داشته باشید.</description>
+    </item>
+    
+  </channel>
+</rss>
