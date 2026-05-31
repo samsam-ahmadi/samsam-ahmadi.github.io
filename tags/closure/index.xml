@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Closure on Kill The Js | Samsam Ahmadi,Front-end Developer</title>
-    <link>https://killthejs.com/tags/closure/</link>
+    <link>https://samsam-ahmadi.com/tags/closure/</link>
     <description>Recent content in Closure on Kill The Js | Samsam Ahmadi,Front-end Developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fa-ir</language>
     <lastBuildDate>Sun, 16 Jul 2017 13:07:31 +0200</lastBuildDate>
     
-	<atom:link href="https://killthejs.com/tags/closure/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://samsam-ahmadi.com/tags/closure/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>کاربرد scope-closure چیست؟</title>
-      <link>https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/</link>
+      <link>https://samsam-ahmadi.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/</link>
       <pubDate>Sun, 16 Jul 2017 13:07:31 +0200</pubDate>
       
-      <guid>https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/</guid>
+      <guid>https://samsam-ahmadi.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/</guid>
       <description>scope اسکوپ (محدوده) چرا اینقدر مهمه؟
 در ابتدا دو تا قسمت اصلی از جاوااسکریپت رو معرفی میکنم تا با چگونگی کارکرد جاوا اسکریپت اشنا بشیم.
 Engine: مسئول شروع و پایان کامپایل برنامه جاوااسکریپت ما و اجرای اون هست

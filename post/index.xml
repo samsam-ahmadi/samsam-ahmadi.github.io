@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Kill The Js | Samsam Ahmadi,Front-end Developer</title>
-    <link>https://killthejs.com/post/</link>
+    <link>https://samsam-ahmadi.com/post/</link>
     <description>Recent content in Posts on Kill The Js | Samsam Ahmadi,Front-end Developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fa-ir</language>
     <lastBuildDate>Sat, 11 Aug 2018 13:07:31 +0200</lastBuildDate>
     
-	<atom:link href="https://killthejs.com/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://samsam-ahmadi.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>کارهایی که قبل و بعد نصب اوبونتو باید انجام داد</title>
-      <link>https://killthejs.com/2018/%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C%DB%8C-%DA%A9%D9%87-%D9%82%D8%A8%D9%84-%D9%88-%D8%A8%D8%B9%D8%AF-%D9%86%D8%B5%D8%A8-%D8%A7%D9%88%D8%A8%D9%88%D9%86%D8%AA%D9%88-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%A7%D9%86%D8%AC%D8%A7%D9%85-%D8%AF%D8%A7%D8%AF/</link>
+      <link>https://samsam-ahmadi.com/2018/%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C%DB%8C-%DA%A9%D9%87-%D9%82%D8%A8%D9%84-%D9%88-%D8%A8%D8%B9%D8%AF-%D9%86%D8%B5%D8%A8-%D8%A7%D9%88%D8%A8%D9%88%D9%86%D8%AA%D9%88-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%A7%D9%86%D8%AC%D8%A7%D9%85-%D8%AF%D8%A7%D8%AF/</link>
       <pubDate>Sat, 11 Aug 2018 13:07:31 +0200</pubDate>
       
-      <guid>https://killthejs.com/2018/%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C%DB%8C-%DA%A9%D9%87-%D9%82%D8%A8%D9%84-%D9%88-%D8%A8%D8%B9%D8%AF-%D9%86%D8%B5%D8%A8-%D8%A7%D9%88%D8%A8%D9%88%D9%86%D8%AA%D9%88-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%A7%D9%86%D8%AC%D8%A7%D9%85-%D8%AF%D8%A7%D8%AF/</guid>
+      <guid>https://samsam-ahmadi.com/2018/%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C%DB%8C-%DA%A9%D9%87-%D9%82%D8%A8%D9%84-%D9%88-%D8%A8%D8%B9%D8%AF-%D9%86%D8%B5%D8%A8-%D8%A7%D9%88%D8%A8%D9%88%D9%86%D8%AA%D9%88-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%A7%D9%86%D8%AC%D8%A7%D9%85-%D8%AF%D8%A7%D8%AF/</guid>
       <description>قبل نصب اوبونتو باید چکار کنیم؟ به طور خلاصه اگه ویندوز ۱۰ دارید باید ویژگی disable fast boot رو غیر فعال کنید.تا در اوبونتو بتوانید به پارتیشن‌های ntfs دسترسی داشته باشید. بعد از این مرحله اماده سازی پارتیشن‌ برای نصب اوبونتو هست.پیشنهاد من برای کسانی که تازه میخواهند نصب کنند اینه که در کنار پارتیشن ویندوز یک پارتیشن دیگر هم برای دیتا‌هایی مثل فیلم و موزیک و &amp;hellip; داشته باشید و اگر بیشتر از یک پارتیشن برای این دیتاها دارید بهتره که پارتیشن‌هارو merge کنید و یک پارتیشن برای دیتا‌ها داشته باشید.</description>
     </item>
     
     <item>
       <title>کاربرد scope-closure چیست؟</title>
-      <link>https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/</link>
+      <link>https://samsam-ahmadi.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/</link>
       <pubDate>Sun, 16 Jul 2017 13:07:31 +0200</pubDate>
       
-      <guid>https://killthejs.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/</guid>
+      <guid>https://samsam-ahmadi.com/2017/%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF-scope-closure-%DA%86%DB%8C%D8%B3%D8%AA/</guid>
       <description>scope اسکوپ (محدوده) چرا اینقدر مهمه؟
 در ابتدا دو تا قسمت اصلی از جاوااسکریپت رو معرفی میکنم تا با چگونگی کارکرد جاوا اسکریپت اشنا بشیم.
 Engine: مسئول شروع و پایان کامپایل برنامه جاوااسکریپت ما و اجرای اون هست
@@ -36,10 +36,10 @@ Scope: اسکوپ میاد هرچی متغیر رو ما تعریف کردیم �
     
     <item>
       <title>معرفی Destructuring در جاوااسکریپت</title>
-      <link>https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/</link>
+      <link>https://samsam-ahmadi.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/</link>
       <pubDate>Sun, 07 May 2017 13:07:31 +0200</pubDate>
       
-      <guid>https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/</guid>
+      <guid>https://samsam-ahmadi.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/</guid>
       <description>Destructuring چیست؟ در es6 معرفی شد. کارش گرفتن دیتا به صورت خاص از درون آرایه‌ها و ابجکت‌ها است اما به شکل و ساختار assignment کردن.
 بزارید با مثال و توضیح بیشتر معرفی کنیم این ویژگی عالی رو.
 یک زمانی میشه که ما از یک تابع یه آرایه میگیریم و میخوایم توی چندتا متغیر ذخیره کنیم . روش متداول این شکلیه .
@@ -48,10 +48,10 @@ function genre(){ return [&amp;quot;post-rock&amp;quot;,&amp;quot;trance&amp;quo
     
     <item>
       <title>من و باراک اوباما در روز۱۳ عید</title>
-      <link>https://killthejs.com/2017/%D9%85%D9%86-%D9%88-%D8%A8%D8%A7%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D8%A8%D8%A7%D9%85%D8%A7-%D8%AF%D8%B1-%D8%B1%D9%88%D8%B2%DB%B1%DB%B3-%D8%B9%DB%8C%D8%AF/</link>
+      <link>https://samsam-ahmadi.com/2017/%D9%85%D9%86-%D9%88-%D8%A8%D8%A7%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D8%A8%D8%A7%D9%85%D8%A7-%D8%AF%D8%B1-%D8%B1%D9%88%D8%B2%DB%B1%DB%B3-%D8%B9%DB%8C%D8%AF/</link>
       <pubDate>Fri, 05 May 2017 13:50:46 +0200</pubDate>
       
-      <guid>https://killthejs.com/2017/%D9%85%D9%86-%D9%88-%D8%A8%D8%A7%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D8%A8%D8%A7%D9%85%D8%A7-%D8%AF%D8%B1-%D8%B1%D9%88%D8%B2%DB%B1%DB%B3-%D8%B9%DB%8C%D8%AF/</guid>
+      <guid>https://samsam-ahmadi.com/2017/%D9%85%D9%86-%D9%88-%D8%A8%D8%A7%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D8%A8%D8%A7%D9%85%D8%A7-%D8%AF%D8%B1-%D8%B1%D9%88%D8%B2%DB%B1%DB%B3-%D8%B9%DB%8C%D8%AF/</guid>
       <description>برای تقویت زبان انگلیسی مخصوصا تلفظ،دوستان پیشنهاد میکردن که سخنرانی افراد مشهور رو گوش کنم .از بین سخنرانی های که موجوده و توصیه میشد،سخنرانی های باراک اوباما بود.
 سایتی وجود داره به نام americanrhetoric که یک صفحه داره مخصوص اقای اوباما که میتونید تمام سخنرانی هاشون رو از ابتدا به صورت فایل صوتی و به همراه متن سخنرانی به صورت pdf دانلود کنید.چیزی حدود ۴۵۰ تا سخرانی.
 تصمیم گرفتم تمام سخنرانی های اقای اوباما رو دانلود کنم اما قاعدتا نمیشه که برای هرکدوم از سخنرانی‌هاش پوشه ساخت و دونه دونه دانلود کرد و ریخت توی پوشه .</description>
