@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Es6 on Kill The Js | Samsam Ahmadi,Front-end Developer</title>
-    <link>https://killthejs.com/tags/es6/</link>
+    <link>https://samsam-ahmadi.com/tags/es6/</link>
     <description>Recent content in Es6 on Kill The Js | Samsam Ahmadi,Front-end Developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fa-ir</language>
     <lastBuildDate>Sun, 07 May 2017 13:07:31 +0200</lastBuildDate>
     
-	<atom:link href="https://killthejs.com/tags/es6/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://samsam-ahmadi.com/tags/es6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>معرفی Destructuring در جاوااسکریپت</title>
-      <link>https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/</link>
+      <link>https://samsam-ahmadi.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/</link>
       <pubDate>Sun, 07 May 2017 13:07:31 +0200</pubDate>
       
-      <guid>https://killthejs.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/</guid>
+      <guid>https://samsam-ahmadi.com/2017/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-destructuring-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA/</guid>
       <description>Destructuring چیست؟ در es6 معرفی شد. کارش گرفتن دیتا به صورت خاص از درون آرایه‌ها و ابجکت‌ها است اما به شکل و ساختار assignment کردن.
 بزارید با مثال و توضیح بیشتر معرفی کنیم این ویژگی عالی رو.
 یک زمانی میشه که ما از یک تابع یه آرایه میگیریم و میخوایم توی چندتا متغیر ذخیره کنیم . روش متداول این شکلیه .
